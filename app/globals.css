@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f0f0f;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Button Styles */
+.btn-custom {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  background: radial-gradient(50% 50% at 50% 50%, #9ff1f6 0%, #47adf6 100%);
+
+  /* drop shadows & inner shadows & inner stroke */
+  box-shadow:
+    0px 8px 16px rgba(159, 189, 246, 0.12),
+    0px 36px 32px -16px rgba(109, 71, 246, 0.20),
+    inset 0px 0px 12px rgba(255, 255, 255, 0.25),
+    inset 0px -24px 32px rgba(255, 255, 255, 0.22),
+    inset 0px 8px 24px -18px rgba(255, 255, 255, 0.25),
+    inset 0px 0px 0px 3px rgba(0, 0, 0, 0.30);
+  /* Stroke inside 5px 000000 40% */
+
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+
+
+/* Text layer */
+.btn-custom-text {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #ffffff;
+  z-index: 10;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.10));
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .btn-custom-text {
+    font-size: 32px;
+  }
+}
+
+/* Noise overlay */
+.btn-custom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23ffffff'/%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.7' mix-blend-mode='overlay'/%3E%3C/svg%3E");
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Passing shine animation */
+@keyframes shine {
+  0% {
+    transform: translateX(-150%) skewX(-15deg);
+  }
+
+  50% {
+    transform: translateX(250%) skewX(-15deg);
+  }
+
+  100% {
+    transform: translateX(250%) skewX(-15deg);
+  }
+}
+
+.btn-custom::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+  animation: shine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Center Glow Element */
+.btn-custom-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.64);
+  filter: blur(24px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+.scroll-text {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* Soft floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 2s;
+}
