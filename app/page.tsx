@@ -21,9 +21,9 @@ export default function Home() {
         </div>
 
         {/* Hero Content Area - Vertical Center on Desktop */}
-        <div className="relative z-10 flex flex-col items-center md:items-start md:flex-grow md:justify-center w-full px-6 md:px-16 lg:px-24">
+        <div className="relative z-10 flex flex-col items-center  md:flex-grow md:justify-center flex-col md:flex-row w-full px-6 md:px-16 lg:px-24">
           <div className="w-full md:w-[60%] lg:w-[50%] flex flex-col items-center md:items-start text-center md:text-left z-20">
-            <h1 className="text-[7.7vw] md:text-5xl lg:text-[62px] leading-[1.1] mb-6 drop-shadow-xl tracking-tight font-medium">
+            <h1 className="text-[7.7vw] md:text-[5xl] lg:text-[3.5vw] leading-[1.1] mb-6 drop-shadow-xl tracking-tight font-medium">
               Criamos websites e <br className="hidden md:block" />
               landing pages pro seu <br className="hidden md:block" />
               negócio se <span className="italic font-bold">destacar</span>
@@ -45,16 +45,14 @@ export default function Home() {
           </div>
 
           {/* Right Phone Mockup Desktop */}
-          <div className="hidden md:block absolute right-0 lg:-right-10 top-[50%] -translate-y-[50%] w-[60%] h-[800px] z-10 pointer-events-none">
-            <div className="relative w-full h-[120%] transform scale-110">
-              <Image
-                src="/assets/phone-mockup.png"
-                alt="Phone Mockup"
-                fill
-                className="object-contain object-right-top drop-shadow-2xl"
-                priority
-              />
-            </div>
+          <div className="hidden md:flex relative flex-1 items-center justify-center w-[100%] h-[70vh] z-10 pointer-events-none">
+            <Image
+              src="/assets/phone-mockup.png"
+              alt="Phone Mockup"
+              fill
+              className="object-contain drop-shadow-2xl"
+              priority
+            />
           </div>
 
           {/* Right Phone Mockup Mobile */}

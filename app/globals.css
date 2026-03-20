@@ -12,6 +12,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  box-sizing: border-box;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
