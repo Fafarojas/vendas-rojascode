@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Montserrat, Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '../components/SmoothScroll';
+import { GradualBlurBottom } from "@/components/GradualBlurBottom";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans bg-[#0F0F0F] text-white">
         <SmoothScroll>
           {children}
+          <GradualBlurBottom />
         </SmoothScroll>
       </body>
     </html>
