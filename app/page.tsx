@@ -236,11 +236,11 @@ export default function Home() {
       <section className="w-full px-6 md:px-12 py-24 md:py-32 relative z-20 overflow-hidden">
         <div className="max-w-7xl mx-auto relative">
           {/* Header following the photo exactly */}
-          <div className="text-center mb-16 md:mb-24">
+          <div className="text-left md:text-center mb-16 md:mb-24">
             <h2 className="text-white text-[6vw] md:text-5xl font-semibold mb-6 tracking-tight leading-tight">
               Sua página nas mãos certas. E no tempo certo.
             </h2>
-            <p className="text-white/40 text-lg md:text-xl font-light tracking-wide">Veja como funciona o processo em 4 etapas simples e rápidas:</p>
+            <p className="text-white/40 text-md md:text-xl font-light tracking-wide">Veja como funciona o processo em 4 etapas simples e rápidas:</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
