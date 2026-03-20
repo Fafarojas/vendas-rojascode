@@ -70,6 +70,8 @@ export default function Home() {
             },
             {
               y: "0",
+              xPercent: -50,
+              yPercent: -50,
               opacity: 1,
               scale: 1,
               duration: 1.5,
@@ -247,7 +249,7 @@ export default function Home() {
         </div>
 
         {/* Solution Card (Entrance) */}
-        <div className="solution-card absolute z-30 w-[90%] md:w-[600px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-8 md:p-10 rounded-[15px] border border-[3px] border-white/05 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <div className="solution-card absolute z-30 w-[90%] md:w-[600px] left-1/2 top-1/2 p-8 md:p-10 rounded-[15px] border border-[3px] border-white/05 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           {/* Layer 1: Black Base */}
           <div className="absolute inset-0 bg-black -z-20" />
 
