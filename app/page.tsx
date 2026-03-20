@@ -21,7 +21,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content Area - Vertical Center on Desktop */}
-        <div className="relative z-10 flex flex-col items-center  md:flex-grow md:justify-center flex-col md:flex-row w-full px-6 md:px-16 lg:px-24">
+        <div className="relative z-10 flex flex-col items-center  md:flex-grow md:justify-center flex-col md:flex-row w-full px-6 md:px-16 lg:px-24 mt-20 md:mt-0">
           <div className="w-full md:w-[60%] lg:w-[50%] flex flex-col items-center md:items-start text-center md:text-left z-20">
             <h1 className="text-[7.7vw] md:text-[5xl] lg:text-[3.5vw] leading-[1.1] mb-6 drop-shadow-xl tracking-tight font-medium">
               Criamos websites e <br className="hidden md:block" />
@@ -56,7 +56,7 @@ export default function Home() {
           </div>
 
           {/* Right Phone Mockup Mobile */}
-          <div className="md:hidden relative w-full h-[300px] mt-6 z-10 pointer-events-none">
+          <div className="md:hidden relative w-full h-[300px] mt-10 z-10 pointer-events-none">
             <Image
               src="/assets/phone-mockup.png"
               alt="Phone Mockup"
