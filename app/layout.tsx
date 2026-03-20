@@ -1,11 +1,18 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
+import SmoothScroll from '../components/SmoothScroll';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-montserrat',
+});
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+  variable: '--font-bricolage',
 });
 
 export const metadata: Metadata = {
@@ -19,9 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${montserrat.variable} h-full antialiased dark`}>
+    <html lang="pt-BR" className={`${montserrat.variable} ${bricolage.variable} h-full antialiased dark`}>
       <body className="min-h-full flex flex-col font-sans bg-[#0F0F0F] text-white">
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

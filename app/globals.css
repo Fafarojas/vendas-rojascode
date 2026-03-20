@@ -14,6 +14,28 @@
 
 html {
   box-sizing: border-box;
+  overflow-x: hidden !important;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 body {
@@ -56,7 +78,7 @@ body {
 /* Text layer */
 .btn-custom-text {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 18px;
   line-height: 1.2;
   color: #ffffff;
@@ -166,4 +188,13 @@ body {
 .animate-float-delayed {
   animation: float 7s ease-in-out infinite;
   animation-delay: 2s;
+}
+
+.solution-card {
+  isolation: isolate;
+  background: transparent !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(40px);
 }
