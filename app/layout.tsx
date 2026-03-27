@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${montserrat.variable} ${bricolage.variable} h-full antialiased dark`}>
-      <body className="min-h-full flex flex-col font-sans bg-[#0F0F0F] text-white">
+      <body className="min-h-full flex flex-col font-sans bg-[#0A0A0A] text-white">
         <SmoothScroll>
           {children}
           <GradualBlurBottom />

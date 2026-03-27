@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0f0f;
+  --background: #0A0A0A;
   --foreground: #ffffff;
 }
 
@@ -158,7 +158,21 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee linear infinite;
+  animation: marquee var(--duration, 30s) linear infinite;
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration, 30s) linear infinite;
 }
 
 .scroll-text {
@@ -197,4 +211,92 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(40px);
+}
+
+/* ── Realism card styles ── */
+.realism-card {
+  cursor: default;
+  border-radius: 16px;
+  border: none;
+  padding: 2px;
+  background: radial-gradient(circle 80px at 80% -10%, #ffffff, #181b1b);
+  position: relative;
+  overflow: hidden;
+}
+
+.realism-card::after {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 60%;
+  border-radius: 120px;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.realism-blob {
+  position: absolute;
+  width: 70px;
+  height: 100%;
+  border-radius: 15px;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle 60px at 0% 100%,
+      #3fe9ff,
+      #00aeff8e,
+      transparent);
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.realism-inner {
+  border-radius: 18px;
+  color: #fff;
+  z-index: 3;
+  position: relative;
+  background: radial-gradient(circle 80px at 80% -50%, #555555, #0f1111);
+  height: 100%;
+}
+
+.realism-inner::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 13px;
+  background: radial-gradient(circle 60px at 0% 100%,
+      #00e1ff1a,
+      #0000ff11,
+      transparent);
+  position: absolute;
+  pointer-events: none;
+}
+
+.realism-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  background: radial-gradient(circle 80px at 80% 0%, rgba(255, 255, 255, 0.08), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radar Circles */
+.radar-circles {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circleAtCenter, black, transparent 80%);
+}
+
+.radar-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }

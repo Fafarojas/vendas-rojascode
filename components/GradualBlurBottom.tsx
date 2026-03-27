@@ -1,34 +1,10 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function GradualBlurBottom() {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollTop = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-
-            // Logic: Hide if at very top (< 50px) OR very bottom (> docHeight - 50px)
-            const isAtTop = scrollTop < 30;
-            const isAtBottom = scrollTop + windowHeight >= docHeight - 30;
-
-            setIsVisible(!isAtTop && !isAtBottom);
-        };
-
-        handleScroll(); // Initial check
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
     return (
         <div
             className={cn(
-                "pointer-events-none fixed bottom-0 left-0 z-[40] w-full h-40 flex flex-col justify-end transition-opacity duration-300 ease-in-out",
-                isVisible ? "opacity-100" : "opacity-0"
+                "pointer-events-none fixed bottom-0 left-0 z-[40] w-full h-40 flex flex-col justify-end"
             )}
         >
             {/* 

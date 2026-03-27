@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
+import { PremiumBenefitsSection, GradientCard } from "@/components/PremiumBenefitsSection";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -37,8 +38,8 @@ export default function Home() {
         // Background transition
         const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768;
         const targetGlow = isDesktop
-          ? "radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(15, 15, 15, 1) 45%)"
-          : "radial-gradient(circle, rgba(59, 130, 246, 0.7) 0%, rgba(15, 15, 15, 1) 70%)";
+          ? "radial-gradient(circle at center, rgba(59, 130, 246, 0.18) 0%, rgba(10, 10, 10, 1) 100%)"
+          : "radial-gradient(circle at center, rgba(59, 130, 246, 0.25) 0%, rgba(10, 10, 10, 1) 100%)";
 
         tl.to(".glow-bg", {
           background: targetGlow,
@@ -90,15 +91,15 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col min-h-screen bg-[#0F0F0F] text-white max-w-[100vw]">
+    <main className="flex flex-col min-h-screen bg-[#0A0A0A] text-white max-w-[100vw]">
       {/* Hero Section */}
       <section className="relative w-full h-auto min-h-screen flex flex-col items-center pt-8">
         {/* Background Image */}
         <div
-          className="absolute contrast-115 brightness-85 inset-0 z-0 bg-[url('/assets/fundo.jpg')] lg:bg-[url('/assets/fundopc.jpg')] bg-cover bg-center md:bg-top opacity-90"
+          className="absolute contrast-115 saturate-120 brightness-85 inset-0 z-0 bg-[url('/assets/fundo.jpg')] lg:bg-[url('/assets/fundopc.jpg')] bg-cover bg-center md:bg-top opacity-90"
         />
         {/* Gradient Overlay for bottom transition */}
-        <div className="absolute inset-x-0 bottom-0 h-48 z-0 bg-gradient-to-b from-transparent to-[#0F0F0F] pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-48 z-0 bg-gradient-to-b from-transparent to-[#0A0A0A] pointer-events-none" />
 
         {/* Header Logo */}
         <div className="relative z-10 flex items-center justify-center gap-2 mb-12 md:mb-0 md:mt-12 drop-shadow-md">
@@ -171,8 +172,8 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
           {/* Side Fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-r from-[#0F0F0F] via-[#0F0F0F]/80 to-transparent z-30 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-l from-[#0F0F0F] via-[#0F0F0F]/80 to-transparent z-30 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent z-30 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent z-30 pointer-events-none" />
 
           <div
             className="w-fit flex animate-marquee text-white/40 font-semibold text-[10px] md:text-sm tracking-[0.2em] uppercase items-center whitespace-nowrap"
@@ -203,30 +204,207 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="w-full flex flex-col items-center gap-3 px-6 md:px-12 relative mt-6 md:mt-20 z-20">
-        <h2 className="text-[5.5vw] md:text-5xl font-medium text-center mb-12 flex flex-col items-center">
-          Veja as páginas que fazemos <br />
-          pros nossos clientes
-        </h2>
+      {/* Projects Section (Transformam) */}
+      <section className="w-full relative py-24 sm:py-32 pt-10 overflow-hidden bg-[#0A0A0A] font-sans">
+        {/* Background Radar Circles */}
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-full max-w-[800px] aspect-square pointer-events-none opacity-40">
+          <div className="radar-line w-full h-full opacity-10" />
+          <div className="radar-line w-3/4 h-3/4 opacity-20" />
+          <div className="radar-line w-1/2 h-1/2 opacity-30" />
+          <div className="radar-line w-1/4 h-1/4 opacity-40" />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, rgba(71,173,246,0.05) 0%, transparent 70%)' }} />
+        </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full">
-          {/* Box 1 */}
-          <div className="w-full aspect-[16/9] bg-[#D9D9D9] rounded-xl flex items-center justify-center text-[#999999] font-bold text-2xl drop-shadow-lg">
-            FOTO
+
+
+        <div className="relative z-10 flex flex-col items-center text-center px-6">
+          <h2 className="text-[5.5vw] md:text-5xl font-medium tracking-tight max-w-2xl mb-6">
+            Veja as páginas que fazemos<br className="hidden sm:block" /> pros nossos clientes.
+          </h2>
+
+
+          {/* Avatar row */}
+          <div className="flex items-center -space-x-4 mb-20">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div
+                key={i}
+                className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-[#161616] overflow-hidden bg-neutral-900 shadow-xl"
+                style={{
+                  background: `linear-gradient(45deg, #161616, #222)`,
+                  boxShadow: '0 0 20px rgba(0,0,0,0.5)'
+                }}
+              >
+                {/* Fake avatar bg with initial */}
+                <div className="w-full h-full flex items-center justify-center font-bold text-neutral-600 text-xs sm:text-sm">
+                  User
+                </div>
+                {/* Visual ring border like the screenshot */}
+                <div className="absolute inset-0 rounded-full border border-white/10" />
+              </div>
+            ))}
           </div>
-          {/* Box 2 */}
-          <div className="w-full aspect-[16/9] bg-[#D9D9D9] rounded-xl flex items-center justify-center text-[#999999] font-bold text-2xl drop-shadow-lg opacity-90 hidden md:flex">
-            FOTO
+        </div>
+
+        {/* Dual Carousels */}
+        <div className="relative w-full flex flex-col gap-6 sm:gap-10">
+          {/* Row 1: Right to Left */}
+          <div className="w-full overflow-hidden flex">
+            <motion.div
+              animate={{ x: [0, "-50%"] }}
+              transition={{
+                duration: 40,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="flex gap-4 sm:gap-6 shrink-0"
+            >
+              {[1, 2, 3, 4, 1, 2, 3, 4].map((i, idx) => (
+                <div
+                  key={idx}
+                  className="w-[280px] sm:w-[500px] aspect-video rounded-xl bg-[#111] border border-white/[0.05] overflow-hidden shadow-2xl relative group shrink-0"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center text-white/5 font-bold text-4xl">PROJETO</div>
+                  <div className="absolute bottom-4 left-4 flex flex-col gap-1">
+                    <div className="w-24 h-2 bg-white/10 rounded-full" />
+                    <div className="w-16 h-1.5 bg-white/5 rounded-full" />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </div>
-          {/* Box 3 */}
-          <div className="w-full aspect-[16/9] bg-[#D9D9D9] rounded-xl flex items-center justify-center text-[#999999] font-bold text-2xl drop-shadow-lg opacity-80 mt-8 md:mt-0">
-            FOTO
+
+          {/* Row 2: Left to Right (Reverse) */}
+          <div className="w-full overflow-hidden flex">
+            <motion.div
+              animate={{ x: ["-50%", 0] }}
+              transition={{
+                duration: 45,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="flex gap-4 sm:gap-6 shrink-0"
+            >
+              {[1, 2, 3, 4, 1, 2, 3, 4].map((i, idx) => (
+                <div
+                  key={idx}
+                  className="w-[280px] sm:w-[500px] aspect-video rounded-xl bg-[#111] border border-white/[0.05] overflow-hidden shadow-2xl relative group shrink-0"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-bl from-white/[0.03] to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center text-white/5 font-bold text-4xl">PROJETO</div>
+                  <div className="absolute top-4 right-4 flex gap-1">
+                    <div className="w-3 h-3 rounded-full bg-red-500/10" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/10" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/10" />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </div>
-          {/* Box 4 */}
-          <div className="w-full aspect-[16/9] bg-[#D9D9D9] rounded-xl flex items-center justify-center text-[#999999] font-bold text-2xl drop-shadow-lg opacity-70 hidden md:flex">
-            FOTO
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="w-full py-24 sm:py-32 relative z-20 overflow-hidden bg-[#0A0A0A]">
+        {/* Top Beam Effect */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-blue-400/50 to-transparent z-30" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[40px] bg-blue-500/10 blur-[40px] rounded-full z-20" />
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="text-white text-[7vw] md:text-5xl font-semibold mb-6 tracking-tight leading-tight">
+              Escolha um dos nossos serviços
+            </h2>
+            <p className="text-white/40 text-md md:text-xl font-light tracking-wide max-w-2xl mx-auto">
+              Desenvolvemos a estrutura completa para o seu negócio vender mais no digital.
+            </p>
+          </div>
+
+          <div className="relative border-y border-white/5 grid grid-cols-1 md:grid-cols-3">
+            {/* Grid Intersections (+ signs) */}
+            <div className="absolute -top-1.5 -left-1.5 text-white/20 font-light">+</div>
+            <div className="absolute -top-1.5 -right-1.5 text-white/20 font-light">+</div>
+            <div className="absolute -bottom-1.5 -left-1.5 text-white/20 font-light">+</div>
+            <div className="absolute -bottom-1.5 -right-1.5 text-white/20 font-light">+</div>
+            <div className="hidden md:block absolute -top-1.5 left-1/3 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden md:block absolute -top-1.5 left-2/3 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden md:block absolute -bottom-1.5 left-1/3 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden md:block absolute -bottom-1.5 left-2/3 -translate-x-1/2 text-white/20 font-light">+</div>
+
+            {[
+              {
+                title: "Landing Page",
+                desc: "Estruturas focadas 100% em conversão, desenhadas para transformar tráfego em faturamento real.",
+                tag: "Alta Conversão",
+                icon: "🚀"
+              },
+              {
+                title: "Site Institucional",
+                desc: "Sua vitrine digital com autoridade máxima. Design que transmite confiança em cada clique.",
+                tag: "Autoridade",
+                icon: "🏛️"
+              },
+              {
+                title: "Automações",
+                desc: "Sistemas inteligentes que trabalham por você 24/7, otimizando seus processos e escala.",
+                tag: "Eficiência",
+                icon: "⚡"
+              }
+            ].map((s, i) => (
+              <div
+                key={i}
+                className={`p-8 sm:p-12 relative flex flex-col gap-8 group hover:bg-white/[0.01] transition-colors duration-500
+                  ${i !== 2 ? 'md:border-r border-white/5' : ''}
+                  ${i !== 0 ? 'border-t md:border-t-0 border-white/5' : ''}
+                `}
+              >
+                {/* Internal Glow for each item */}
+                <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.03)_0%,transparent_70%) opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                {/* Top Badges */}
+                <div className="flex items-center justify-between w-full relative z-10">
+                  <div className="px-3 py-1 text-[10px] rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">
+                    {s.tag}
+                  </div>
+                  <span className="text-white/20 text-[10px] uppercase font-bold tracking-tighter">0{i + 1}</span>
+                </div>
+
+                {/* Text Content */}
+                <div className="flex flex-col gap-4 relative z-10">
+                  <h3 className="text-2xl sm:text-3xl font-medium text-white tracking-tight leading-none">{s.title}</h3>
+                  <p className="text-white/40 text-sm sm:text-base leading-relaxed font-light pr-4">
+                    {s.desc}
+                  </p>
+                </div>
+
+                {/* Bottom Image Area (18:9) */}
+                <div className="relative w-full aspect-[18/9] rounded-[12px] overflow-hidden mt-auto border border-white/10 shadow-3xl bg-[#0D0D0D] z-10">
+                  {/* Placeholder for real images */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-white/5 text-xs font-bold uppercase tracking-widest">{s.title} PREVIEW</span>
+                  </div>
+                  {/* Subtle Top Light on the Preview Box */}
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-20">
+            <button className="btn-custom group relative md:!w-[420px] md:!p-6">
+              <div className="absolute -inset-[30px] rounded-[40px] bg-[rgba(255,255,255,0.64)] blur-[24px] pointer-events-none opacity-0 transition-opacity duration-500 block" />
+              <span className="btn-custom-text md:!text-[24px] flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 md:w-8 md:h-8 mr-3 fill-white"
+                >
+                  <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.7-68.2-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.5-.3-8.4 2.4-11.2 2.5-2.5 5.5-6.4 8.2-9.7 2.8-3.3 3.7-5.5 5.5-9.2 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.3 3.6 34.8 2.2 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                </svg>
+                Pedir orçamento agora
+              </span>
+            </button>
           </div>
         </div>
       </section>
@@ -238,7 +416,7 @@ export default function Home() {
           {/* Header following the photo exactly */}
           <div className="text-left md:text-center mb-16 md:mb-24">
             <h2 className="text-white text-[6vw] md:text-5xl font-semibold mb-6 tracking-tight leading-tight">
-              Sua página nas mãos certas. E no tempo certo.
+              Estruturas que fazem a diferença pro seu negócio.
             </h2>
             <p className="text-white/40 text-md md:text-xl font-light tracking-wide">Veja como funciona o processo em 4 etapas simples e rápidas:</p>
           </div>
@@ -274,20 +452,14 @@ export default function Home() {
                 )
               }
             ].map((p, i) => (
-              <motion.div
+              <GradientCard
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="bg-[#111111] border border-white/5 p-6 rounded-[20px] flex flex-col gap-6 hover:bg-[#161616] transition-all group relative overflow-hidden"
+                delay={i * 0.1}
+                className="p-6 h-full flex flex-col gap-6"
               >
-                {/* Subtle internal glow on hover */}
-                <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#47ADF6]/5 blur-[50px] group-hover:bg-[#47ADF6]/10 transition-colors" />
-
                 {/* Icon box (Matching the buttons' gradient and style) */}
                 <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
+                  className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-xl text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
                   style={{
                     background: 'radial-gradient(50% 50% at 50% 50%, #9ff1f6 0%, #47adf6 100%)',
                     boxShadow: '0px 8px 16px rgba(159, 189, 246, 0.12), inset 0px 0px 12px rgba(255, 255, 255, 0.25), inset 0px -24px 32px rgba(255, 255, 255, 0.22)'
@@ -300,17 +472,21 @@ export default function Home() {
                   <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">{p.title}</h3>
                   <p className="text-white/40 text-sm md:text-base leading-relaxed group-hover:text-white/60 transition-colors">{p.desc}</p>
                 </div>
-              </motion.div>
+              </GradientCard>
             ))}
           </div>
         </div>
       </section>
       {/* Interactive Problem Section */}
       <div ref={triggerRef} className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        {/* Smooth Top/Bottom Section Fades */}
+        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
+
         {/* Animated Background Glow */}
-        <div className="glow-bg absolute inset-0 z-0 opacity-40 md:opacity-30"
+        <div className="glow-bg absolute inset-0 z-0 opacity-40"
           style={{
-            background: "radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, rgba(15, 15, 15, 1) 60%)"
+            background: "radial-gradient(circle at center, rgba(239, 68, 68, 0.12) 0%, rgba(10, 10, 10, 1) 100%)"
           }}
         />
 
@@ -334,31 +510,32 @@ export default function Home() {
         {/* Solution Card (Entrance) */}
         <div className="solution-card absolute z-30 w-[90%] md:w-[600px] left-1/2 top-1/2 p-8 md:p-10 rounded-[15px] border border-[3px] border-white/05 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           {/* Layer 1: Black Base */}
-          <div className="absolute inset-0 bg-[#0F0F0F] -z-20" />
+          <div className="absolute inset-0 bg-[#0A0A0A] -z-20" />
 
           {/* Layer 2: Animated Blue Glows (Tailwind + JS/Framer Motion) */}
           <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
-                className="absolute rounded-full blur-[60px]"
+                className="absolute rounded-full blur-[100px]"
                 style={{
-                  width: '300px',
-                  height: '300px',
-                  background: i === 0 ? '#4b9eebff' : i === 1 ? '#47adf6' : '#3b6aecff',
-                  left: `${i * 30}%`,
-                  bottom: '-150px',
+                  width: '320px',
+                  height: '320px',
+                  background: i === 0 ? '#4b9eeb33' : i === 1 ? '#47adf622' : '#3b6aec33',
+                  left: `${(i - 1) * 35}%`,
+                  bottom: '-160px',
+                  transform: 'translateX(50%)',
                 }}
                 animate={{
-                  y: [0, -30, 0],
-                  scale: [1, 1.2, 1],
-                  opacity: [0.4, 0.7, 0.4],
+                  y: [0, -40, 0],
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.6, 0.3],
                 }}
                 transition={{
-                  duration: 5 + i,
+                  duration: 6 + i,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  delay: i * 0.5
+                  delay: i * 0.7
                 }}
               />
             ))}
@@ -388,8 +565,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Espaçador invisível maior para permitir o scroll da animação final */}
-      <div className="h-[100vh]" />
+
     </main>
   );
 }
