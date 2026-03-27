@@ -285,6 +285,41 @@ body {
   z-index: 0;
 }
 
+/* Star Border Animation */
+@keyframes star-border-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.star-border-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #0A0A0A;
+  z-index: 0;
+}
+
+.star-border-container::before {
+  content: "";
+  position: absolute;
+  inset: -200%;
+  background: conic-gradient(from 0deg, transparent 60%, #47adf6 80%, transparent 100%);
+  animation: star-border-spin 4s linear infinite;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.star-border-inner {
+  position: absolute;
+  inset: 1px;
+  background: #0A0A0A;
+  border-radius: 11px;
+  z-index: -1;
+}
+
 /* Radar Circles */
 .radar-circles {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);

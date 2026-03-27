@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ThumbsDown, OctagonAlert, ThumbsUp, ChevronRight } from "lucide-react";
+import { ThumbsDown, OctagonAlert, ThumbsUp, ChevronRight, NotebookPen, Layers, MessageSquareCheck, Rocket } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -306,9 +306,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section className="w-full py-24 sm:py-32 relative z-20 overflow-hidden bg-[#0A0A0A]">
-        {/* Top Beam Effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-blue-400/50 to-transparent z-30" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[40px] bg-blue-500/10 blur-[40px] rounded-full z-20" />
+
 
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16 md:mb-24">
@@ -320,7 +318,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="relative border-y border-white/5 grid grid-cols-1 md:grid-cols-3">
+          <div className="relative border border-white/5 grid grid-cols-1 md:grid-cols-3">
             {/* Grid Intersections (+ signs) */}
             <div className="absolute -top-1.5 -left-1.5 text-white/20 font-light">+</div>
             <div className="absolute -top-1.5 -right-1.5 text-white/20 font-light">+</div>
@@ -353,26 +351,45 @@ export default function Home() {
             ].map((s, i) => (
               <div
                 key={i}
-                className={`p-8 sm:p-12 relative flex flex-col gap-8 group hover:bg-white/[0.01] transition-colors duration-500
+                className={`p-8 sm:p-12 relative flex flex-col gap-8 group transition-colors duration-500
                   ${i !== 2 ? 'md:border-r border-white/5' : ''}
                   ${i !== 0 ? 'border-t md:border-t-0 border-white/5' : ''}
                 `}
               >
-                {/* Internal Glow for each item */}
-                <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.03)_0%,transparent_70%) opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                {/* Internal Background Effects */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  {/* Luz Image Layer */}
+
+                  <div
+                    className="absolute inset-0 opacity-100 bg-cover bg-center"
+                    style={{ backgroundImage: 'url("/assets/luzcortada.webp")' }}
+                  />
+
+                  {/* Dot Grid Pattern */}
+                  <div className="absolute inset-0 opacity-15"
+                    style={{
+                      backgroundImage: 'radial-gradient(circle, #47ADF6 1px, #445277ff 1px)',
+                      backgroundSize: '16px 16px'
+                    }}
+                  />
+
+
+                  {/* Subtle Internal Glow */}
+
+                </div>
 
                 {/* Top Badges */}
                 <div className="flex items-center justify-between w-full relative z-10">
-                  <div className="px-3 py-1 text-[10px] rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">
+                  <div className="px-3 py-1 text-[10px] rounded-full bg-white/10 border border-white/20 text-white/70 font-medium">
                     {s.tag}
                   </div>
-                  <span className="text-white/20 text-[10px] uppercase font-bold tracking-tighter">0{i + 1}</span>
+                  <span className="text-white/70 text-[10px] uppercase font-bold tracking-tighter">0{i + 1}</span>
                 </div>
 
                 {/* Text Content */}
                 <div className="flex flex-col gap-4 relative z-10">
                   <h3 className="text-2xl sm:text-3xl font-medium text-white tracking-tight leading-none">{s.title}</h3>
-                  <p className="text-white/40 text-sm sm:text-base leading-relaxed font-light pr-4">
+                  <p className="text-white/60 text-sm sm:text-base leading-relaxed font-light pr-4">
                     {s.desc}
                   </p>
                 </div>
@@ -391,7 +408,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="flex justify-center mt-20">
+          <div className="flex justify-center mt-10 md:mt-20">
             <button className="btn-custom group relative md:!w-[420px] md:!p-6">
               <div className="absolute -inset-[30px] rounded-[40px] bg-[rgba(255,255,255,0.64)] blur-[24px] pointer-events-none opacity-0 transition-opacity duration-500 block" />
               <span className="btn-custom-text md:!text-[24px] flex items-center justify-center">
@@ -409,70 +426,106 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process Section */}
-      {/* Process Section (Latest Reference Style) */}
-      <section className="w-full px-6 md:px-12 py-24 md:py-32 relative z-20 overflow-hidden">
+      {/* Process Section (Plus-Grid Style) */}
+      <section className="w-full px-6 md:px-12 py-24 md:py-32 relative z-20 overflow-hidden bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto relative">
-          {/* Header following the photo exactly */}
-          <div className="text-left md:text-center mb-16 md:mb-24">
-            <h2 className="text-white text-[6vw] md:text-5xl font-semibold mb-6 tracking-tight leading-tight">
-              Estruturas que fazem a diferença pro seu negócio.
-            </h2>
-            <p className="text-white/40 text-md md:text-xl font-light tracking-wide">Veja como funciona o processo em 4 etapas simples e rápidas:</p>
+          {/* Fusion Background Effects (Intense Style) */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* High Visibility Dot Grid */}
+            <div className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: 'radial-gradient(circle, #47ADF6 1px, transparent 1px)',
+                backgroundSize: '16px 16px'
+              }}
+            />
+
+            {/* Main Intense Light Wash (Top Right) */}
+            <div className="absolute -top-[0%] -right-[10%] w-[80%] h-[120%] bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.25)_0%,rgba(59,130,246,0.1)_40%,transparent_70%)] blur-[60px]" />
+            <div className="absolute -top-[0%] -right-[5%] w-[60%] h-[100%] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08)_0%,transparent_50%)] blur-[40px]" />
+
+            {/* Subtle beam from right to left */}
+            <div className="absolute top-0 right-0 w-full h-[600px] bg-[conic-gradient(from_250deg_at_50%_0%,rgba(59,130,246,0.1)_0%,rgba(255,255,255,0.02)_40%,transparent_100%)] blur-[40px] transform rotate-[-10deg]" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {/* Header */}
+          <div className="text-left md:text-center mb-16 md:mb-24 relative z-10">
+            <h2 className="text-white text-[7vw] md:text-5xl font-semibold mb-6 tracking-tight leading-tight">
+              Estruturas que fazem a diferença pro seu negócio.
+            </h2>
+            <p className="text-white/40 text-md md:text-xl font-light tracking-wide max-w-2xl mx-auto">
+              Veja como funciona o processo em 4 etapas simples e rápidas:
+            </p>
+          </div>
+
+          <div className="relative border border-white/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 transition-all duration-500 bg-[#080a12]/40 backdrop-blur-sm shadow-2xl">
+            {/* Grid Intersections (+ signs) */}
+            <div className="absolute -top-1.5 -left-1.5 text-white/20 font-light">+</div>
+            <div className="absolute -top-1.5 -right-1.5 text-white/20 font-light">+</div>
+            <div className="absolute -bottom-1.5 -left-1.5 text-white/20 font-light">+</div>
+            <div className="absolute -bottom-1.5 -right-1.5 text-white/20 font-light">+</div>
+
+            {/* Responsively show + signs for 4 columns */}
+            <div className="hidden lg:block absolute -top-1.5 left-1/4 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden lg:block absolute -top-1.5 left-2/4 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden lg:block absolute -top-1.5 left-3/4 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden lg:block absolute -bottom-1.5 left-1/4 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden lg:block absolute -bottom-1.5 left-2/4 -translate-x-1/2 text-white/20 font-light">+</div>
+            <div className="hidden lg:block absolute -bottom-1.5 left-3/4 -translate-x-1/2 text-white/20 font-light">+</div>
+
             {[
               {
                 title: "Briefing Inteligente",
                 desc: "Coletamos as informações essenciais para acelerar o design da sua página sem enrolação.",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><line x1="10" y1="9" x2="8" y2="9" /></svg>
-                )
+                icon: "/assets/3d/caderno.png"
               },
               {
                 title: "Design estratégico",
                 desc: "Layout focado em performance e conversão, desenhado sob medida para sua oferta.",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.5 1.5" /><path d="M7.08 11.2a12.8 12.8 0 0 1 0-8.32" /></svg>
-                )
+                icon: "/assets/3d/pincel.png"
               },
               {
                 title: "Aprovação e ajustes",
                 desc: "Receba o layout, dê seu feedback e ajustamos os detalhes finais em conjunto.",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
-                )
+                icon: "/assets/3d/check.png"
               },
               {
                 title: "Página no ar",
                 desc: "Sua página configurada, otimizada e pronta para rodar com performance máxima.",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
-                )
+                icon: "/assets/3d/foguete.png"
               }
             ].map((p, i) => (
-              <GradientCard
+              <div
                 key={i}
-                delay={i * 0.1}
-                className="p-6 h-full flex flex-col gap-6"
+                className={`p-8 sm:p-12 relative flex flex-col gap-8 group hover:bg-white/[0.01] transition-colors duration-500
+                  ${i !== 3 ? 'lg:border-r border-white/5' : ''}
+                  ${i % 2 !== 0 ? 'sm:border-l lg:border-l-0 border-white/5' : ''}
+                  ${i > 1 ? 'sm:border-t lg:border-t-0 border-white/5' : ''}
+                  ${i > 0 ? 'border-t sm:border-t-0 border-white/5' : ''}
+                `}
               >
-                {/* Icon box (Matching the buttons' gradient and style) */}
-                <div
-                  className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-xl text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
-                  style={{
-                    background: 'radial-gradient(50% 50% at 50% 50%, #9ff1f6 0%, #47adf6 100%)',
-                    boxShadow: '0px 8px 16px rgba(159, 189, 246, 0.12), inset 0px 0px 12px rgba(255, 255, 255, 0.25), inset 0px -24px 32px rgba(255, 255, 255, 0.22)'
-                  }}
-                >
-                  {p.icon}
+                {/* Internal Glow for each item */}
+                <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.03)_0%,transparent_70%) opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                {/* Top Step Number */}
+                <div className="flex items-center justify-between w-full relative z-10">
+                  <motion.div
+                    className="w-12 h-12 flex items-center justify-center"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <img src={p.icon} alt={p.title} className="w-full h-full object-contain drop-shadow-2xl" />
+                  </motion.div>
+                  <span className="text-white/20 text-[10px] uppercase font-bold tracking-tighter">PASSO 0{i + 1}</span>
                 </div>
 
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">{p.title}</h3>
-                  <p className="text-white/40 text-sm md:text-base leading-relaxed group-hover:text-white/60 transition-colors">{p.desc}</p>
+                {/* Text Content */}
+                <div className="flex flex-col gap-4 relative z-10">
+                  <h3 className="text-xl sm:text-1xl font-medium text-white tracking-tight leading-tight">{p.title}</h3>
+                  <p className="text-white/40 text-sm sm:text-base leading-relaxed font-light pr-4">
+                    {p.desc}
+                  </p>
                 </div>
-              </GradientCard>
+              </div>
             ))}
           </div>
         </div>
